@@ -23,7 +23,7 @@ To design and develop a responsive and interactive **Temperature Converter Web A
 - Mobile-friendly interface with attractive styling.  
 
 ## 🔗 LinkedIn Post  
-[Read here](https://www.linkedin.com/in/your-linkedin-profile)  
+[Read here][(https://www.linkedin.com/in/your-linkedin-profile)](https://www.linkedin.com/posts/manasapagadalu_webdevelopment-uiuxdesign-internship-activity-7370412707394674689-HIM-?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEbDhEQBnXnueLcA6lkDak0dY8kBvHHvyDU)  
 
 ## 👤 Author  
 **Name:** Pagadalu Manasa  
