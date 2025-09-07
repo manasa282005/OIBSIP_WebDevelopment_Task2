@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: url("temp.jpg") no-repeat center center/cover;
+      color: #0d87c4;
+    }
+    .converter {
+      background: rgba(255, 255, 255, 0.099);
+      backdrop-filter: blur(12px);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(3, 46, 71, 0.333);
+      text-align: center;
+      width: 350px;
+      color: #178cd0;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .converter h1 {
+      margin-bottom: 20px;
+      font-size: 26px;
+      letter-spacing: 1px;
+      color: #03465b;
+    
+    }
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: solid rgb(24, 23, 23,0.2);
+      border-radius: 10px;
+      font-size: 16px;
+    }
+    input {
+      outline: none;
+      background: #ffffff90;
+      color: #333;
+    }
+    select {
+      background: #fff;
+      color: #333;
+      cursor: pointer;
+    }
+    button {
+      background: linear-gradient(45deg, #e77fb1);
+      color: rgb(11, 11, 11);
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
+    }
+    button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(45deg, rgba(15, 203, 240, 0.133));
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(242, 175, 59, 0.3);
+      border-radius: 12px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #222;
+      animation: slideUp 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.9);}
+      to {opacity: 1; transform: scale(1);}
+    }
+
+    @keyframes slideUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <div class="converter">
+    <h1>🌡 Temperature Converter</h1>
+    <input type="number" id="tempInput" placeholder="Enter temperature" required>
+    <select id="unit">
+      <option value="C">Celsius (°C)</option>
+      <option value="F">Fahrenheit (°F)</option>
+      <option value="K">Kelvin (K)</option>
+    </select>
+    <button onclick="convertTemp()">Convert</button>
+    <div class="result" id="result">Result will appear here</div>
+  </div>
+
+  <script>
+    function convertTemp() {
+      const input = document.getElementById('tempInput').value;
+      const unit = document.getElementById('unit').value;
+      const resultDiv = document.getElementById('result');
+
+      if (isNaN(input) || input === "") {
+        resultDiv.innerHTML = "⚠️ Please enter a valid number";
+        return;
+      }
+
+      let celsius, fahrenheit, kelvin;
+      const temp = parseFloat(input);
+
+      if (unit === "C") {
+        celsius = temp;
+        fahrenheit = (temp * 9/5) + 32;
+        kelvin = temp + 273.15;
+      } else if (unit === "F") {
+        celsius = (temp - 32) * 5/9;
+        fahrenheit = temp;
+        kelvin = celsius + 273.15;
+      } else if (unit === "K") {
+        kelvin = temp;
+        celsius = temp - 273.15;
+        fahrenheit = (celsius * 9/5) + 32;
+      }
+
+      resultDiv.innerHTML = `
+        🌡 Converted Values:<br>
+        <b>${celsius.toFixed(2)} °C</b><br>
+        <b>${fahrenheit.toFixed(2)} °F</b><br>
+        <b>${kelvin.toFixed(2)} K</b>
+      `;
+    }
+  </script>
+</body>
+</html>
